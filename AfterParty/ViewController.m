@@ -17,9 +17,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    progress=[[UILabel alloc] initWithFrame:CGRectMake(80, 15, 100, 50)];
+    progress=[[UILabel alloc] initWithFrame:CGRectMake(100, 85, 180, 90)];
+    [progress setFont:[UIFont fontWithName:@"Verdana" size:42]];
     progress.textColor=[UIColor blackColor];
-    [progress setText:@"Time : 59:00"];
+    [progress setText:@"59:59"];
     progress.backgroundColor=[UIColor clearColor];
     [self.view addSubview:progress];
     currMinute=59;
@@ -48,7 +49,7 @@
             currSeconds-=1;
         }
         if(currMinute>-1)
-            [progress setText:[NSString stringWithFormat:@"%@%d%@%02d",@"Time : ",currMinute,@":",currSeconds]];
+            [progress setText:[NSString stringWithFormat:@"%@%d%@%02d",@"",currMinute,@":",currSeconds]];
     }
     else
     {
