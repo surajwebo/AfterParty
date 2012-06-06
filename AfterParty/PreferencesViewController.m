@@ -35,7 +35,7 @@
     [userPreference removeObjectForKey:@"IamFEMALE"];
     [userPreference removeObjectForKey:@"SeekMALE"];
     [userPreference removeObjectForKey:@"SeekFEMALE"];
-    
+        
 }
 
 
@@ -162,13 +162,6 @@
 - (IBAction)TakeAPicture:(id)sender 
 {
     
-    
-    NSLog(@"IamMALE %@",[userPreference objectForKey:@"IamMALE"]);
-    NSLog(@"IamFEMALE %@",[userPreference objectForKey:@"IamFEMALE"]);
-    
-    NSLog(@"SeekMALE %@",[userPreference objectForKey:@"SeekMALE"]);
-    NSLog(@"SeekFEMALE %@",[userPreference objectForKey:@"SeekFEMALE"]);
-    
     if ( ([[userPreference objectForKey:@"IamMALE"] isEqualToString:@"yes"] || [[userPreference objectForKey:@"IamFEMALE"] isEqualToString:@"yes"]) && ([[userPreference objectForKey:@"SeekMALE"] isEqualToString:@"yes"] || [[userPreference objectForKey:@"SeekFEMALE"] isEqualToString:@"yes"]) ) 
     {
         NSLog(@"IamMALE %@",[userPreference objectForKey:@"IamMALE"]);
@@ -176,15 +169,15 @@
         
         NSLog(@"SeekMALE %@",[userPreference objectForKey:@"SeekMALE"]);
         NSLog(@"SeekFEMALE %@",[userPreference objectForKey:@"SeekFEMALE"]);
-    }
-    
-  /*  if (([iAmMale isSelected]  || [iAmFemale isSelected] ) && ([lookingForMale isSelected] || [lookingForFemale isSelected])) 
-    {
-        NSLog(@"Open Camera");
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         
+       imagePicker = [[UIImagePickerController alloc] init];
+        
+         NSLog(@"Device:  %@",[[UIDevice currentDevice] model]);
         // Set source to the camera
-        imagePicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+        if ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone Simulator"]) 
+            imagePicker.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
+        else 
+            imagePicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
         
         // Delegate is self
         imagePicker.delegate = self;
@@ -193,19 +186,49 @@
        // imagePicker.allowsImageEditing = NO;
         
         // Show image picker
-        [self presentModalViewController:imagePicker animated:YES];
-    }*/
+        [self presentModalViewController:imagePicker animated:YES];	
+    }
+    else 
+    {
+        NSLog(@"Select Any Preference");
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error !!" message:@"Please select your preferences" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [errorAlert show];
+        [errorAlert release];
+    }
+    
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    UIAlertView *alert;
+    
+	// Unable to save the image  
+    if (error)
+        alert = [[UIAlertView alloc] initWithTitle:@"Error" 
+                                           message:@"Unable to save image to Photo Album." 
+                                          delegate:self cancelButtonTitle:@"Ok" 
+                                 otherButtonTitles:nil];
+	else // All is well
+        alert = [[UIAlertView alloc] initWithTitle:@"Success" 
+                                           message:@"Image saved to Photo Album." 
+                                          delegate:self cancelButtonTitle:@"Ok" 
+                                 otherButtonTitles:nil];
+    
+    
+    [alert show];
+    [alert release];
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    // Access the uncropped image from info dictionary
-    UIImage *image = [info objectForKey:@"Image"];
+	// Access the uncropped image from info dictionary
+	UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
-    // Save image
+	// Save image
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     
-    [picker release];
+	[picker release];
 }
+
 
 @end

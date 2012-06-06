@@ -11,6 +11,7 @@
 @interface PreferencesViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     NSUserDefaults *userPreference;
+    UIImagePickerController *imagePicker;
     
 }
 @property (retain, nonatomic) IBOutlet UIButton *iAmMale;
