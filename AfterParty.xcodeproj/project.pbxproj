@@ -17,6 +17,11 @@
 		21835CB1157F6FA00027BD27 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21835CAF157F6FA00027BD27 /* ViewController.xib */; };
 		21835CBF157F80BC0027BD27 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21835CBD157F80BC0027BD27 /* PreferencesViewController.m */; };
 		21835CC0157F80BC0027BD27 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21835CBE157F80BC0027BD27 /* PreferencesViewController.xib */; };
+		21835CCB157F89C10027BD27 /* FemaleSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 21835CC7157F89C10027BD27 /* FemaleSelected.png */; };
+		21835CCC157F89C10027BD27 /* FemaleUnselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 21835CC8157F89C10027BD27 /* FemaleUnselected.png */; };
+		21835CCD157F89C10027BD27 /* MaleSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 21835CC9157F89C10027BD27 /* MaleSelected.png */; };
+		21835CCE157F89C10027BD27 /* MaleUnselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 21835CCA157F89C10027BD27 /* MaleUnselected.png */; };
+		21835CD1157F96370027BD27 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 21835CD0157F96370027BD27 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		21835CBC157F80BC0027BD27 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
 		21835CBD157F80BC0027BD27 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
 		21835CBE157F80BC0027BD27 /* PreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
+		21835CC7157F89C10027BD27 /* FemaleSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FemaleSelected.png; sourceTree = "<group>"; };
+		21835CC8157F89C10027BD27 /* FemaleUnselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FemaleUnselected.png; sourceTree = "<group>"; };
+		21835CC9157F89C10027BD27 /* MaleSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MaleSelected.png; sourceTree = "<group>"; };
+		21835CCA157F89C10027BD27 /* MaleUnselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MaleUnselected.png; sourceTree = "<group>"; };
+		21835CD0157F96370027BD27 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 		21835CA0157F6FA00027BD27 /* AfterParty */ = {
 			isa = PBXGroup;
 			children = (
+				21835CCF157F89C50027BD27 /* Images */,
 				21835CA9157F6FA00027BD27 /* AppDelegate.h */,
 				21835CAA157F6FA00027BD27 /* AppDelegate.m */,
 				21835CC2157F80D20027BD27 /* Timer */,
@@ -120,6 +131,18 @@
 				21835CAF157F6FA00027BD27 /* ViewController.xib */,
 			);
 			name = Timer;
+			sourceTree = "<group>";
+		};
+		21835CCF157F89C50027BD27 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				21835CD0157F96370027BD27 /* Default.png */,
+				21835CC7157F89C10027BD27 /* FemaleSelected.png */,
+				21835CC8157F89C10027BD27 /* FemaleUnselected.png */,
+				21835CC9157F89C10027BD27 /* MaleSelected.png */,
+				21835CCA157F89C10027BD27 /* MaleUnselected.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +198,11 @@
 				21835CA5157F6FA00027BD27 /* InfoPlist.strings in Resources */,
 				21835CB1157F6FA00027BD27 /* ViewController.xib in Resources */,
 				21835CC0157F80BC0027BD27 /* PreferencesViewController.xib in Resources */,
+				21835CCB157F89C10027BD27 /* FemaleSelected.png in Resources */,
+				21835CCC157F89C10027BD27 /* FemaleUnselected.png in Resources */,
+				21835CCD157F89C10027BD27 /* MaleSelected.png in Resources */,
+				21835CCE157F89C10027BD27 /* MaleUnselected.png in Resources */,
+				21835CD1157F96370027BD27 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
