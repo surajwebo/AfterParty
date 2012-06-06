@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PreferencesViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
     progress=[[UILabel alloc] initWithFrame:CGRectMake(100, 85, 180, 90)];
     [progress setFont:[UIFont fontWithName:@"Verdana" size:42]];
     progress.textColor=[UIColor blackColor];
@@ -35,6 +38,7 @@
     timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
     
 }
+
 -(void)timerFired
 {
     if((currMinute>0 || currSeconds>=0) && currMinute>=0)
@@ -57,48 +61,6 @@
     }
 }
 
-/*-(void) viewDidAppear:(BOOL)animated{
-    countDown=120;
-    NSTimer *secTimer=[NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(updateCountDown:) userInfo:nil repeats:YES];
-}
-
--(void) updateCountDown:(NSTimer *) theTimer
-{
-    NSInteger mins,secs;
-    NSString *timeString;
-    countDown--;
-    if (countDown>=0) 
-    {
-        mins=countDown/60;
-        secs=countDown%60;
-        displayTimeLabel.text=[NSString stringWithFormat:@"%02d:%02d",mins,secs];
-        
-    } 
-    else 
-    {
-        [theTimer invalidate];
-        // do whatever you wanted to do after two minutes
-    }
-    
-}*/
-
-- (void)use:(id)sender {
-    // start timer
-    
-    // set userInfo to nil as we don't need user interaction
-}
-/*
--(void)updateTimer{
-    timeRemaining=timeRemaining-1;
-    int days=(int)((double)timeRemaining/(3600.0*24.00));
-    int diffDay=timeRemaining-(days*3600*24);
-    int hours=(int)((double)diffDay/3600.00);
-    int diffMin=diffDay-(hours*3600);
-    int minutes=(int)(diffMin/60.0);
-    int seconds=diffMin-(minutes*60);
-    NSLog(@”%d Days %d Hours %d Minutes %d Seconds”,days,hours,minutes,seconds);
-}
-*/
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -108,6 +70,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (IBAction)goToPreferences:(id)sender 
+{
+    NSLog(@"Push View to preferences");
+    PreferencesViewController *preferencesViewController = [[PreferencesViewController alloc] initWithNibName:@"PreferencesViewController" bundle:nil];
+    [self.navigationController pushViewController:preferencesViewController animated:YES];
+    [preferencesViewController release];
 }
 
 @end

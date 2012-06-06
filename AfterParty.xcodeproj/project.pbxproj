@@ -15,6 +15,8 @@
 		21835CAB157F6FA00027BD27 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 21835CAA157F6FA00027BD27 /* AppDelegate.m */; };
 		21835CAE157F6FA00027BD27 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21835CAD157F6FA00027BD27 /* ViewController.m */; };
 		21835CB1157F6FA00027BD27 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21835CAF157F6FA00027BD27 /* ViewController.xib */; };
+		21835CBF157F80BC0027BD27 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21835CBD157F80BC0027BD27 /* PreferencesViewController.m */; };
+		21835CC0157F80BC0027BD27 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21835CBE157F80BC0027BD27 /* PreferencesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,9 @@
 		21835CAC157F6FA00027BD27 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		21835CAD157F6FA00027BD27 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		21835CB0157F6FA00027BD27 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		21835CBC157F80BC0027BD27 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		21835CBD157F80BC0027BD27 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
+		21835CBE157F80BC0027BD27 /* PreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +84,8 @@
 			children = (
 				21835CA9157F6FA00027BD27 /* AppDelegate.h */,
 				21835CAA157F6FA00027BD27 /* AppDelegate.m */,
-				21835CAC157F6FA00027BD27 /* ViewController.h */,
-				21835CAD157F6FA00027BD27 /* ViewController.m */,
-				21835CAF157F6FA00027BD27 /* ViewController.xib */,
+				21835CC2157F80D20027BD27 /* Timer */,
+				21835CC1157F80C80027BD27 /* Preferences */,
 				21835CA1157F6FA00027BD27 /* Supporting Files */,
 			);
 			path = AfterParty;
@@ -96,6 +100,26 @@
 				21835CA8157F6FA00027BD27 /* AfterParty-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		21835CC1157F80C80027BD27 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				21835CBC157F80BC0027BD27 /* PreferencesViewController.h */,
+				21835CBD157F80BC0027BD27 /* PreferencesViewController.m */,
+				21835CBE157F80BC0027BD27 /* PreferencesViewController.xib */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		21835CC2157F80D20027BD27 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				21835CAC157F6FA00027BD27 /* ViewController.h */,
+				21835CAD157F6FA00027BD27 /* ViewController.m */,
+				21835CAF157F6FA00027BD27 /* ViewController.xib */,
+			);
+			name = Timer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +174,7 @@
 			files = (
 				21835CA5157F6FA00027BD27 /* InfoPlist.strings in Resources */,
 				21835CB1157F6FA00027BD27 /* ViewController.xib in Resources */,
+				21835CC0157F80BC0027BD27 /* PreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +188,7 @@
 				21835CA7157F6FA00027BD27 /* main.m in Sources */,
 				21835CAB157F6FA00027BD27 /* AppDelegate.m in Sources */,
 				21835CAE157F6FA00027BD27 /* ViewController.m in Sources */,
+				21835CBF157F80BC0027BD27 /* PreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

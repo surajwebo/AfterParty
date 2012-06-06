@@ -18,5 +18,6 @@
     
     
 }
+- (IBAction)goToPreferences:(id)sender;
 
 @end
