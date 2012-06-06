@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+{
+    UILabel *progress;
+    NSTimer *timer;
+    int currHours;
+    int currMinute;
+    int currSeconds;
+    
+    
+}
 
 @end
