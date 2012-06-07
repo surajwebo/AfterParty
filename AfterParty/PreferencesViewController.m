@@ -171,7 +171,7 @@
 {
     if ([arrImages count] > 0) 
     {
-		NSString *strURL = @"Write Your URL Here.";// URL to upload image
+		NSString *strURL = @"URL Here";// URL to upload image
 		ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:strURL]];
 		[request setDelegate:self];
 		[request setPostValue:@"This is sample text..." forKey:@"text"];//Here write down the text which will be sent.
@@ -265,6 +265,7 @@
     
     [alert show];
     [alert release];
+    [self.navigationController dismissModalViewControllerAnimated:YES];	
     
 }
 
