@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PreferencesViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PreferencesViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 {
     NSUserDefaults *userPreference;
     UIImagePickerController *imagePicker;

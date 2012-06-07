@@ -42,6 +42,7 @@
     [userPreference removeObjectForKey:@"SeekFEMALE"];
     
     tagLineTextField.hidden = true;
+    tagLineTextField.delegate = self;
         
 }
 
@@ -204,8 +205,8 @@
 {
 	
 	NSString *receivedString = [request responseString];
-    
-	UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error !!" message:receivedString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    //receivedString
+	UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error !!" message:@"Web Call Failed" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }
@@ -271,7 +272,7 @@
                                           delegate:self cancelButtonTitle:@"Ok" 
                                  otherButtonTitles:nil];
         photoImageView = [[UIImageView alloc] init];
-        [photoImageView setFrame:CGRectMake(0, 0, 320, 350)];
+        [photoImageView setFrame:CGRectMake(0, 50, 320, 320)];
         photoImageView.image = [UIImage imageWithData:dataImage];
         [self.view addSubview:photoImageView];
     }
@@ -310,5 +311,10 @@
 	[self.navigationController dismissModalViewControllerAnimated:YES];	
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [tagLineTextField resignFirstResponder];
+    return YES;
+}
 
 @end

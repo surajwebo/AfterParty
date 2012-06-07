@@ -180,7 +180,7 @@
 						<string key="NSFrame">{{186, 286}, {77, 62}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="207391524"/>
+						<reference key="NSNextKeyView" ref="687146476"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -250,10 +250,10 @@
 					<object class="IBUITextField" id="207391524">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 367}, {280, 31}}</string>
+						<string key="NSFrame">{{20, 17}, {280, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="687146476"/>
+						<reference key="NSNextKeyView" ref="187734695"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -288,7 +288,7 @@
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="187734695"/>
+				<reference key="NSNextKeyView" ref="207391524"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -551,6 +551,7 @@
 						<string key="iAmMale">UIButton</string>
 						<string key="lookingForFemale">UIButton</string>
 						<string key="lookingForMale">UIButton</string>
+						<string key="tagLineTextField">UITextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="iAmFemale">
@@ -568,6 +569,10 @@
 						<object class="IBToOneOutletInfo" key="lookingForMale">
 							<string key="name">lookingForMale</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tagLineTextField">
+							<string key="name">tagLineTextField</string>
+							<string key="candidateClassName">UITextField</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
