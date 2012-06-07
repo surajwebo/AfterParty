@@ -7,6 +7,7 @@
 //
 
 #import "PreferencesViewController.h"
+#import "ASIFormDataRequest.h"
 
 @interface PreferencesViewController ()
 
@@ -17,6 +18,8 @@
 @synthesize iAmFemale;
 @synthesize lookingForMale;
 @synthesize lookingForFemale;
+@synthesize arrImages;
+@synthesize tagLineTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +38,8 @@
     [userPreference removeObjectForKey:@"IamFEMALE"];
     [userPreference removeObjectForKey:@"SeekMALE"];
     [userPreference removeObjectForKey:@"SeekFEMALE"];
+    
+   // tagLineTextField.hidden = true;
         
 }
 
@@ -46,6 +51,7 @@
     [self setIAmFemale:nil];
     [self setLookingForMale:nil];
     [self setLookingForFemale:nil];
+    [self setTagLineTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -61,6 +67,8 @@
     [iAmFemale release];
     [lookingForMale release];
     [lookingForFemale release];
+    [arrImages release];
+    [tagLineTextField release];
     [super dealloc];
 }
 
@@ -159,6 +167,46 @@
     [userPreference synchronize];
 }
 
+- (IBAction)postImageToServer:(id)sender 
+{
+    if ([arrImages count] > 0) 
+    {
+		NSString *strURL = @"Write Your URL Here.";// URL to upload image
+		ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:strURL]];
+		[request setDelegate:self];
+		[request setPostValue:@"This is sample text..." forKey:@"text"];//Here write down the text which will be sent.
+		for (int i = 0; i < [arrImages count]; i++) 
+        {
+			[request addData:[arrImages objectAtIndex:i] withFileName:@"image.jpg" andContentType:@"image/jpeg" forKey:[NSString stringWithFormat:@"image%d", i + 1]];
+		}	
+		[request startAsynchronous];
+	}
+	else 
+    {
+		UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error !!" message:@"Please select images..." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alertView show];
+		[alertView release];
+	}
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request 
+{
+	NSString *receivedString = [request responseString];
+    NSLog(@"%@",request);	
+	UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Success" message:receivedString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+	
+}
+- (void)requestFailed:(ASIHTTPRequest *)request 
+{
+	
+	NSString *receivedString = [request responseString];
+    
+	UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error !!" message:receivedString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[alertView show];
+	[alertView release];
+}
 - (IBAction)TakeAPicture:(id)sender 
 {
     
@@ -208,26 +256,43 @@
                                            message:@"Unable to save image to Photo Album." 
                                           delegate:self cancelButtonTitle:@"Ok" 
                                  otherButtonTitles:nil];
-	else // All is well
+    // Image is saved successfully
+	else 
         alert = [[UIAlertView alloc] initWithTitle:@"Success" 
                                            message:@"Image saved to Photo Album." 
                                           delegate:self cancelButtonTitle:@"Ok" 
                                  otherButtonTitles:nil];
     
-    
     [alert show];
     [alert release];
+    
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    // Initialize array (arrImages)
+    arrImages = [[NSMutableArray alloc] init]; 
+    
 	// Access the uncropped image from info dictionary
 	UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
-	// Save image
+    // Convert Image to NSData (byte format)
+    NSData *dataImage =  UIImageJPEGRepresentation(image,1);
+    
+    // Add encoded image to Array
+    [arrImages addObject:dataImage];
+    
+	// Save image to Album
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     
 	[picker release];
+    //tagLineTextField.hidden = false;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker 
+{
+    // Dismiss image picker
+	[self.navigationController dismissModalViewControllerAnimated:YES];	
 }
 
 
