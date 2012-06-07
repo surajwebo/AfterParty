@@ -20,6 +20,8 @@
 @synthesize lookingForFemale;
 @synthesize arrImages;
 @synthesize tagLineTextField;
+@synthesize photoImageView;
+@synthesize image;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +41,7 @@
     [userPreference removeObjectForKey:@"SeekMALE"];
     [userPreference removeObjectForKey:@"SeekFEMALE"];
     
-   // tagLineTextField.hidden = true;
+    tagLineTextField.hidden = true;
         
 }
 
@@ -235,6 +237,7 @@
         
         // Show image picker
         [self presentModalViewController:imagePicker animated:YES];	
+        
     }
     else 
     {
@@ -252,19 +255,30 @@
     
 	// Unable to save the image  
     if (error)
+    {
         alert = [[UIAlertView alloc] initWithTitle:@"Error" 
                                            message:@"Unable to save image to Photo Album." 
                                           delegate:self cancelButtonTitle:@"Ok" 
                                  otherButtonTitles:nil];
+       
+
+    }
     // Image is saved successfully
 	else 
+    {
         alert = [[UIAlertView alloc] initWithTitle:@"Success" 
                                            message:@"Image saved to Photo Album." 
                                           delegate:self cancelButtonTitle:@"Ok" 
                                  otherButtonTitles:nil];
+        photoImageView = [[UIImageView alloc] init];
+        [photoImageView setFrame:CGRectMake(0, 0, 320, 350)];
+        photoImageView.image = [UIImage imageWithData:dataImage];
+        [self.view addSubview:photoImageView];
+    }
     
     [alert show];
     [alert release];
+    // Dismiss image picker
     [self.navigationController dismissModalViewControllerAnimated:YES];	
     
 }
@@ -275,10 +289,10 @@
     arrImages = [[NSMutableArray alloc] init]; 
     
 	// Access the uncropped image from info dictionary
-	UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+	image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
     // Convert Image to NSData (byte format)
-    NSData *dataImage =  UIImageJPEGRepresentation(image,1);
+    dataImage =  UIImageJPEGRepresentation(image,1);
     
     // Add encoded image to Array
     [arrImages addObject:dataImage];
@@ -287,7 +301,7 @@
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     
 	[picker release];
-    //tagLineTextField.hidden = false;
+    tagLineTextField.hidden = false;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker 

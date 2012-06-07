@@ -13,6 +13,9 @@
     NSUserDefaults *userPreference;
     UIImagePickerController *imagePicker;
     NSMutableArray *arrImages;
+    UIImageView *photoImageView;
+    UIImage *image;
+    NSData *dataImage;
     
 }
 @property (retain, nonatomic) IBOutlet UIButton *iAmMale;
@@ -21,6 +24,8 @@
 @property (retain, nonatomic) IBOutlet UIButton *lookingForFemale;
 @property (retain) NSMutableArray *arrImages;
 @property (retain, nonatomic) IBOutlet UITextField *tagLineTextField;
+@property (retain) UIImageView *photoImageView;
+@property (retain) UIImage *image;
 
 
 - (IBAction)maleSelectAction:(id)sender;
